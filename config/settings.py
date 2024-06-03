@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # my-apps
     'accounts',
+    'pages',
 
 ]
 
@@ -133,5 +134,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # accounts config
-
 AUTH_USER_MODEL = 'accounts.CustomUser'
