@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'allauth',
     'allauth.account',
+    'rosetta',
 
     # local-apps
     'accounts',
@@ -142,6 +143,15 @@ EMAIL_HOST_PASSWORD = "tresoynxwsdsdbub"
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fa'
+
+LOCALE_PATHS = (
+    'templates/locale',
+)
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('fa', 'Persian')
+)
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tehran'

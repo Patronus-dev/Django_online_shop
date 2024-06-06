@@ -2,9 +2,14 @@ from django.shortcuts import render
 from django.views.generic import *
 from django.shortcuts import get_object_or_404, reverse
 from django.utils.translation import gettext as _
+from django.contrib import messages
 
 from .models import Product, Comment
 from .forms import CommentForm
+
+
+def messages_view(request):
+    messages.success(request, _('done'))
 
 
 class ProductListView(ListView):

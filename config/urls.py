@@ -7,4 +7,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('products/', include('products.urls')),
 
+    # Rosetta (i18n)
+    path('rosetta/', include('rosetta.urls')),
+
 ]
