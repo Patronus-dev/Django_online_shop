@@ -8,10 +8,6 @@ from .models import Product, Comment
 from .forms import CommentForm
 
 
-def messages_view(request):
-    messages.success(request, _('done'))
-
-
 class ProductListView(ListView):
     # model = Product
     queryset = Product.objects.filter(active=True)

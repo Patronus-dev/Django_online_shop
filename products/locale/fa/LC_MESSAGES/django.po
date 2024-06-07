@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 01:43+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2024-06-07 15:49+0330\n"
+"PO-Revision-Date: 2024-06-07 15:50+0330\n"
+"Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: .\models.py:30
 msgid "Very Bad"
@@ -49,46 +50,55 @@ msgstr "متن نظر:"
 msgid "Your score:"
 msgstr "امتیاز شما:"
 
-#: .\templates\products\product_detail.html:17
-msgid "Product detail"
-msgstr "جزئیات محصول"
-
-#: .\templates\products\product_detail.html:53
+#: .\templates\products\product_detail.html:46
 msgid "Add to Cart"
 msgstr "افزودن به سبد خرید"
 
-#: .\templates\products\product_detail.html:57
+#: .\templates\products\product_detail.html:64
 msgid "categories"
 msgstr "دسته بندی ها"
 
-#: .\templates\products\product_detail.html:58
+#: .\templates\products\product_detail.html:65
 msgid "Dress"
 msgstr "لباس"
 
-#: .\templates\products\product_detail.html:59
+#: .\templates\products\product_detail.html:66
 msgid "summer"
 msgstr "تابستانی"
 
-#: .\templates\products\product_detail.html:60
+#: .\templates\products\product_detail.html:67
 msgid "warm"
 msgstr "گرم"
 
-#: .\templates\products\product_detail.html:61
+#: .\templates\products\product_detail.html:68
 msgid "women"
 msgstr "زنانه"
 
-#: .\templates\products\product_detail.html:73
+#: .\templates\products\product_detail.html:80
 msgid "Product description"
 msgstr "توضیحات محصول"
 
-#: .\templates\products\product_detail.html:81
+#: .\templates\products\product_detail.html:88
 msgid "comments"
 msgstr "نظرات"
 
-#: .\templates\products\product_detail.html:154
+#: .\templates\products\product_detail.html:163
 msgid "Write your comment"
 msgstr "نظرتان را بنویسید"
 
-#: .\templates\products\product_detail.html:159
+#: .\templates\products\product_detail.html:168
 msgid "Submit"
 msgstr "ارسال"
+
+#: .\templates\products\product_detail.html:171
+msgid "To post a comment,please  "
+msgstr ""
+
+#: .\templates\products\product_detail.html:172
+msgid "Login"
+msgstr "ورود"
+
+#: .\templates\products\product_list.html:23
+#| msgid "Products:  "
+msgid "Products :  "
+msgstr "محصولات : "

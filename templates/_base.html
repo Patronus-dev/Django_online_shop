@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 
 <!doctype html>
@@ -27,16 +28,18 @@
     {#          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">#}
 </head>
 
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-
 <body dir='rtl'>
+
+<!-- Preloader Start -->
+{#    <div class="ShoppingYar-preloader active">#}
+{#        <div class="ShoppingYar-preloader-inner h-100 d-flex align-items-center justify-content-center">#}
+{#            <div class="ShoppingYar-child ShoppingYar-bounce1"></div>#}
+{#            <div class="ShoppingYar-child ShoppingYar-bounce2"></div>#}
+{#            <div class="ShoppingYar-child zuka-bounce3"></div>#}
+{#        </div>#}
+{#    </div>#}
+<!-- Preloader End -->
+
 <!-- Header Start -->
 <header class="header">
     <div class="header-inner fixed-header">
@@ -93,7 +96,7 @@
                         <li class="header-toolbar__item mini-cart-item">
                             <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                 <i class="flaticon flaticon-shopping-cart"></i>
-                                <sup class="mini-cart-count">2</sup>
+                                <sup class="mini-cart-count">{{ cart|length }}</sup>
                             </a>
                         </li>
                         <li class="header-toolbar__item user-info">
@@ -101,9 +104,26 @@
                                 <i class="flaticon flaticon-user"></i>
                             </a>
                             <ul class="user-info-menu">
-                                <li>
-                                    <a class="text-right" href="my-account.html">حساب کاربری</a>
-                                </li>
+                                {% if user.is_authenticated %}
+                                    <li>
+                                        <a class="text-right"
+                                           href="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-right"
+                                           href="#">{% trans 'Profile' %}</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a class="text-right"
+                                           href="{% url 'account_login' %}">{% trans 'Login' %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-right"
+                                           href="{% url 'account_signup' %}">{% trans 'Signup' %}</a>
+                                    </li>
+
+                                {% endif %}
                                 <li>
                                     <a class="text-right" href="cart.html">سبد خرید</a>
                                 </li>
@@ -133,13 +153,14 @@
 </header>
 <!-- Header End -->
 
+{% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
 
-{#{% if user.is_authenticated %}#}
-{#    <span>Hello {{ user.email }}</span> | <a href="{% url 'account_logout' %}">Logout</a>#}
-{#{% else %}#}
-{#    <a href="{% url 'account_login' %}">Login</a> | <a href="{% url 'account_signup' %}">Sign-up</a>#}
-{#{% endif %}#}
-{#<hr>#}
 
 {% block content %}
 {% endblock content %}
@@ -173,6 +194,35 @@
 <!-- Footer End-->
 
 
+<!-- Main Content Wrapper Start -->
+
+<!-- Search form Popup Start -->
+<div class="searchform__popup" id="searchForm">
+    <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+    <div class="searchform__body">
+        <p>{% trans 'Enter your subject in the box below' %}</p>
+        <form class="searchform">
+            <input type="text" name="popup-search" id="popup-search" class="searchform__input"
+                   placeholder="جستجو در بین محصولات...">
+            <button type="submit" class="searchform__submit"><i
+                    class="flaticon flaticon-magnifying-glass-icon"></i></button>
+        </form>
+    </div>
+</div>
+<!-- Search form Popup End -->
+
+
+<!-- Global Overlay Start -->
+<div class="ShoppingYar-global-overlay"></div>
+<!-- Global Overlay End -->
+
+<!-- Mini Cart Start -->
+{% include 'cart/cart_sidebar.html' %}
+<!-- Mini Cart End -->
+
+<!-- Main Wrapper End -->
+
+
 <!-- ************************* JS Files ************************* -->
 
 <!-- jQuery JS -->
@@ -180,6 +230,7 @@
 
 <!-- Main JS -->
 <script src="{% static 'js/main.js' %}"></script>
+
 
 {#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"#}
 {#        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"#}
